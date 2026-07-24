@@ -1,0 +1,94 @@
+
+.main-window {
+    -fx-background-image: url("images/bg-montanhas.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+
+.login-card {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 20, 0, 0, 10);
+    -fx-background-radius: 8;
+}
+
+
+.card-top {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8 8 0 0;
+}
+
+
+.card-bottom {
+    -fx-background-color: #323b47;
+    -fx-background-radius: 0 0 8 8;
+}
+
+.circle-divider {
+    -fx-effect: dropshadow(two-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
+}
+
+.arrow-down {
+    -fx-text-fill: #323b47;
+    -fx-font-weight: bold;
+}
+
+
+.title-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 10 0 10 0;
+}
+
+
+.input-field {
+    -fx-background-color: #252b34;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #6c7684;
+    -fx-background-radius: 20;
+    -fx-border-color: #4a5463;
+    -fx-border-radius: 20;
+    -fx-padding: 5 15 5 15;
+    -fx-font-size: 11px;
+}
+
+.input-field:focused {
+    -fx-border-color: #00e5ff;
+}
+
+
+.checkbox-text {
+    -fx-text-fill: #828c9a;
+    -fx-font-size: 10px;
+}
+
+.checkbox-text .box {
+    -fx-background-color: #252b34;
+    -fx-border-color: #00e5ff;
+    -fx-border-radius: 3;
+}
+
+.link-text {
+    -fx-text-fill: #828c9a;
+    -fx-font-size: 10px;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+}
+
+.link-text:hover {
+    -fx-text-fill: #ffffff;
+}
+
+
+.btn-login {
+    -fx-background-color: linear-gradient(to right, #00e5ff, #a65fec);
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 3);
+}
+
+.btn-login:hover {
+    -fx-background-color: linear-gradient(to right, #33eeff, #bb82fa);
+}
