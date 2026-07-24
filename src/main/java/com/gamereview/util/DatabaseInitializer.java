@@ -19,13 +19,7 @@ public class DatabaseInitializer {
             }
 
             String sql = new String(input.readAllBytes(), StandardCharsets.UTF_8);
-
-            for (String comando : sql.split(";")) {
-                String comandoLimpo = comando.trim();
-                if (!comandoLimpo.isEmpty()) {
-                    stmt.execute(comandoLimpo);
-                }
-            }
+            stmt.execute(sql);
 
             System.out.println("Db started successfully");
 
