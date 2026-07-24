@@ -14,7 +14,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<StackPane prefHeight="600.0" prefWidth="800.0" styleClass="main-window" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="600.0" prefWidth="800.0" styleClass="main-window" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.gamereview.controller.LoginController">
    <children>
       <VBox alignment="CENTER" maxHeight="450.0" maxWidth="350.0" styleClass="login-card">
          <children>
@@ -28,17 +29,17 @@
                   </ImageView>
                </children>
             </StackPane>
-            
+
             <VBox alignment="CENTER" prefHeight="250.0" prefWidth="350.0" spacing="15.0" styleClass="card-bottom">
                <padding>
                   <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
                </padding>
                <children>
                   <Label styleClass="title-label" text="USER LOGIN" />
-                  
-                  <TextField fx:id="txtUsuario" prefHeight="35.0" promptText="USERNAME" styleClass="input-field" />
-                  <PasswordField fx:id="txtSenha" prefHeight="35.0" promptText="PASSWORD" styleClass="input-field" />
-                  
+
+                  <TextField fx:id="txtEmail" prefHeight="35.0" promptText="EMAIL" styleClass="input-field" />
+                  <PasswordField fx:id="txtPassword" prefHeight="35.0" promptText="PASSWORD" styleClass="input-field" />
+
                   <HBox alignment="CENTER" prefWidth="200.0">
                      <children>
                         <CheckBox mnemonicParsing="false" styleClass="checkbox-text" text="Keep me logged in" />
@@ -46,8 +47,9 @@
                         <Hyperlink styleClass="link-text" text="Forgot Password?" />
                      </children>
                   </HBox>
-                  
-                  <Button fx:id="btnEntrar" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="btn-login" text="LOGIN">
+
+                  <Button fx:id="btnEntrar" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="btn-login" text="LOGIN"
+                          onAction="#login">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -56,7 +58,7 @@
             </VBox>
          </children>
       </VBox>
-      
+
       <StackPane maxHeight="40.0" maxWidth="40.0" styleClass="circle-divider" translateY="-25.0">
          <children>
             <Circle fill="WHITE" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
