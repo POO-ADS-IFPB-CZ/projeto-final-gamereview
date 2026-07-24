@@ -10,22 +10,40 @@ import java.sql.SQLException;
 
 public class ProfileController {
 
-    public void createProfile(Profile profile) {
+    public boolean createProfile(Profile profile) {
+
+        String checkEmail = """
+        SELECT id
+        FROM profile
+        WHERE email = ?
+        """;
 
         String sql = """
             INSERT INTO profile(username, email, password)
             VALUES (?, ?, ?)
             """;
 
-        try (Connection connection = ConnectionFactory.getConnection();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+        try (Connection connection = ConnectionFactory.getConnection()){
+
+            PreparedStatement checkStmt = connection.prepareStatement(checkEmail);
+            checkStmt.setString(1, profile.getEmail());
+
+            ResultSet result = checkStmt.executeQuery();
+
+            if (result.next()) {
+                return false;
+            }
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
 
             stmt.setString(1, profile.getUsername());
             stmt.setString(2, profile.getEmail());
             stmt.setString(3, profile.getPassword());
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -34,17 +52,21 @@ public class ProfileController {
         String sql = """
         SELECT id, username, email, password
         FROM profile
-        WHERE email = ? AND password = ?
+        WHERE email = ?
         """;
 
         try (Connection connection = ConnectionFactory.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, email);
-            stmt.setString(2, password);
+
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
+
+                if (!result.getString("password").equals(password)) {
+                    return null;
+                }
 
                 Profile profile = new Profile();
                 profile.setId(result.getInt("id"));
