@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="8.0" prefWidth="500.0"
+      style="-fx-background-color: #ffffff; -fx-background-radius: 8px; -fx-border-color: #e0e0e0; -fx-border-radius: 8px; -fx-border-width: 1px;"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gamereview.controller.ReviewCardController">
+
+    <padding>
+        <Insets top="15.0" right="15.0" bottom="15.0" left="15.0" />
+    </padding>
+
+    <!-- Cabeçalho: Título e Nota -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label fx:id="lblGameTitle" text="Nome do Jogo"
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1a1a1a;" HBox.hgrow="ALWAYS" />
+        <Label fx:id="lblRating" text="★ 5.0"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #f39c12;" />
+    </HBox>
+
+    <!-- Subtítulo: Plataforma e Data -->
+    <HBox alignment="CENTER_LEFT" spacing="15.0">
+        <Label fx:id="lblPlatform" text="Plataforma: PC"
+               style="-fx-font-size: 12px; -fx-text-fill: #666666;" />
+        <Label fx:id="lblDate" text="24/07/2026"
+               style="-fx-font-size: 12px; -fx-text-fill: #999999;" />
+    </HBox>
+
+    <!-- Conteúdo da Review -->
+    <Label fx:id="lblText" text="Texto da análise do jogo..." wrapText="true"
+           style="-fx-font-size: 13px; -fx-text-fill: #333333;" />
+
+</VBox>

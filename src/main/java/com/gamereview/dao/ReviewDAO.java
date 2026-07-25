@@ -55,9 +55,10 @@ public class ReviewDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Erro ao buscar reviews no banco de dados.", e);
+            throw new RuntimeException(e);
         }
 
+        System.out.println(reviews);
         return reviews;
     }
 }
