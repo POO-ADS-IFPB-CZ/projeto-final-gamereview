@@ -4,7 +4,7 @@ import com.gamereview.model.Profile;
 import com.gamereview.model.Review;
 import com.gamereview.util.UserSession;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.time.format.DateTimeFormatter;
 
@@ -16,11 +16,13 @@ public class ReviewCardController {
     @FXML private Label lblDate;
     @FXML private Label lblText;
     @FXML private Label lblUser;
+    @FXML private Button btnDel;
+    @FXML private Button btnUpd;
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void setReviewData(Review review) {
-
+        Profile user = UserSession.getInstance().getUser();
         lblGameTitle.setText(review.getGameTitle());
         lblRating.setText(String.format("%.1f", review.getRating()));
         lblPlatform.setText(review.getPlatform().toUpperCase());
@@ -34,5 +36,24 @@ public class ReviewCardController {
         lblText.setText(review.getText());
 
         lblUser.setText(review.getUsername());
+
+        if (user != null && user.getId() == review.getProfileId()) {
+            btnDel.setVisible(true);
+            btnDel.setOnAction(event -> handleDeleteReview(review));
+
+            btnUpd.setVisible(true);
+            btnUpd.setOnAction(event -> handleUpdateReview(review));
+        } else {
+            btnDel.setVisible(false);
+            btnUpd.setVisible(false);
+        }
+    }
+
+    public void handleDeleteReview(Review review) {
+
+    }
+
+    public void handleUpdateReview(Review review) {
+
     }
 }
