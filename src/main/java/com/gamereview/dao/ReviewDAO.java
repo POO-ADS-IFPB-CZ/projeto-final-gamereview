@@ -33,6 +33,49 @@ public class ReviewDAO {
         }
     }
 
+    public void update(Review review) {
+        String sql = """
+                UPDATE review
+                SET game_title = ?, platform = ?, rating = ?, text = ?
+                WHERE id = ? AND profile_id = ?
+                """;
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, review.getGameTitle());
+            stmt.setString(2, review.getPlatform());
+            stmt.setDouble(3, review.getRating());
+            stmt.setString(4, review.getText());
+            stmt.setInt(5, review.getId());
+            stmt.setInt(6, review.getProfileId());
+
+            stmt.executeUpdate();
+            System.out.println("Review atualizada");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao atualizar review.", e);
+        }
+    }
+
+    public void delete(int reviewId, int profileId) {
+        String sql = "DELETE FROM review WHERE id = ? AND profile_id = ?";
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, reviewId);
+            stmt.setInt(2, profileId);
+
+            stmt.executeUpdate();
+            System.out.println("Review excluída com sucesso!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao deletar review.", e);
+        }
+    }
+
     public List<Review> listReviews() {
         String sql = """
             SELECT r.id, r.game_title, r.rating, r.platform, r.text, r.review_date, r.profile_id, p.username

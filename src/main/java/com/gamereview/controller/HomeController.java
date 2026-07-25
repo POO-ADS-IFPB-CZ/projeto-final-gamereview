@@ -25,6 +25,7 @@ public class HomeController {
 
     @FXML
     public void initialize() {
+        System.out.println("Ola " + UserSession.getInstance().getUser());
         loadReviews(reviewDAO.listReviews());
     }
 

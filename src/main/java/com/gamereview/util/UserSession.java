@@ -26,11 +26,9 @@ public class UserSession {
         return instance;
     }
 
-
     public Profile getUser() {
         return user;
     }
-
 
     public static void cleanSession() {
         instance = null;

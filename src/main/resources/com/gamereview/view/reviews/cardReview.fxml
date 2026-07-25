@@ -30,6 +30,7 @@
                 <Label text="•" styleClass="checkbox-text" />
                 <Label fx:id="lblDate" styleClass="checkbox-text" text="25/07/2026" style="-fx-opacity: 0.7;" />
             </children>
+
         </HBox>
 
         <Label fx:id="lblText" wrapText="true" styleClass="checkbox-text"
