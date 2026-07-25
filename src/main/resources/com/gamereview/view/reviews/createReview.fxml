@@ -26,7 +26,7 @@
     <Label text="Análise:" />
     <TextArea fx:id="txtReviewContent" promptText="Escreva o que achou do jogo..." prefRowCount="5" wrapText="true" />
 
-    <Button text="Publicar Review" onAction="#handleSalvarReview"
+    <Button text="Publicar Review" onAction="#handleSaveReview"
             style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" />
 
     <Label fx:id="lblMessage" style="-fx-font-size: 13px;" />

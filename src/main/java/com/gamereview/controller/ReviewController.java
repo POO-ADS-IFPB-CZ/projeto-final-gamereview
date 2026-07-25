@@ -25,48 +25,48 @@ public class ReviewController {
     }
 
     @FXML
-    private void handleSalvarReview() {
-        String titulo = txtGameTitle.getText();
-        String plataforma = txtPlatform.getText();
-        Double nota = cbRating.getValue();
-        String conteudo = txtReviewContent.getText();
+    private void handleSaveReview() {
+        String title = txtGameTitle.getText();
+        String platform = txtPlatform.getText();
+        Double rating = cbRating.getValue();
+        String content = txtReviewContent.getText();
 
-        if (titulo == null || titulo.isBlank() ||
-                plataforma == null || plataforma.isBlank() ||
-                nota == null || conteudo == null || conteudo.isBlank()) {
+        if (title == null || title.isBlank() ||
+                platform == null || platform.isBlank() ||
+                rating == null || content == null || content.isBlank()) {
 
-            exibirMensagem("Por favor, preencha todos os campos!", true);
+            showMessage("Por favor, preencha todos os campos!", true);
             return;
         }
 
-        int profileIdLogado = 1;
+        int profileIdload = 1;
 
-        Review novaReview = new Review(
-                titulo,
-                plataforma,
-                nota,
-                conteudo,
+        Review newReview = new Review(
+                title,
+                platform,
+                rating,
+                content,
                 LocalDate.now(),
-                profileIdLogado
+                profileIdload
         );
 
         try {
-            reviewDAO.salvar(novaReview);
-            exibirMensagem("Review publicada com sucesso!", false);
-            limparFormulario();
+            reviewDAO.save(newReview);
+            showMessage("Review publicada com sucesso!", false);
+            clearForms();
         } catch (Exception e) {
-            exibirMensagem("Erro ao salvar review no banco de dados.", true);
+            showMessage("Erro ao salvar review no banco de dados.", true);
         }
     }
 
-    private void limparFormulario() {
+    private void clearForms() {
         txtGameTitle.clear();
         txtPlatform.clear();
         cbRating.setValue(null);
         txtReviewContent.clear();
     }
 
-    private void exibirMensagem(String msg, boolean isErro) {
+    private void showMessage(String msg, boolean isErro) {
         if (lblMessage != null) {
             lblMessage.setText(msg);
             lblMessage.setStyle(isErro ? "-fx-text-fill: red;" : "-fx-text-fill: green;");
