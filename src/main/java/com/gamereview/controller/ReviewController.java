@@ -1,7 +1,9 @@
 package com.gamereview.controller;
 
 import com.gamereview.dao.ReviewDAO;
+import com.gamereview.model.Profile;
 import com.gamereview.model.Review;
+import com.gamereview.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -26,6 +28,7 @@ public class ReviewController {
 
     @FXML
     private void handleSaveReview() {
+        Profile user = UserSession.getInstance().getUser();
         String title = txtGameTitle.getText();
         String platform = txtPlatform.getText();
         Double rating = cbRating.getValue();
@@ -39,7 +42,7 @@ public class ReviewController {
             return;
         }
 
-        int profileIdload = 1;
+        int profileIdload = user.getId();
 
         Review newReview = new Review(
                 title,

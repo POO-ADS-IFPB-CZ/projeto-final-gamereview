@@ -1,6 +1,8 @@
 package com.gamereview.controller;
 
+import com.gamereview.model.Profile;
 import com.gamereview.model.Review;
+import com.gamereview.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -18,6 +20,7 @@ public class ReviewCardController {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void setReviewData(Review review) {
+
         lblGameTitle.setText(review.getGameTitle());
         lblRating.setText(String.format("%.1f", review.getRating()));
         lblPlatform.setText(review.getPlatform().toUpperCase());

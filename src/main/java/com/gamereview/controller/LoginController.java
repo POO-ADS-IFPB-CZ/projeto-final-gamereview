@@ -1,6 +1,7 @@
 package com.gamereview.controller;
 
 import com.gamereview.model.Profile;
+import com.gamereview.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,9 +36,9 @@ public class LoginController {
 
         if (profile != null) {
             try {
+                UserSession.initSession(profile);
                 Parent root = FXMLLoader.load(getClass().getResource("/com/gamereview/view/home.fxml"));
 
-                // Pega o Stage usando o próprio botão de login
                 Stage stage = (Stage) btnEntrar.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 stage.show();
