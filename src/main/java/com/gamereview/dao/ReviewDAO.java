@@ -34,7 +34,12 @@ public class ReviewDAO {
     }
 
     public List<Review> listReviews() {
-        String sql = "SELECT * from review ORDER BY review_date desc";
+        String sql = """
+            SELECT r.id, r.game_title, r.rating, r.platform, r.text, r.review_date, r.profile_id, p.username
+            FROM review r
+            INNER JOIN profile p ON r.profile_id = p.id
+            ORDER BY r.review_date DESC
+            """;
         List<Review> reviews = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -49,6 +54,7 @@ public class ReviewDAO {
                 review.setText(rs.getString("text"));
                 review.setReviewDate(rs.getDate("review_date").toLocalDate());
                 review.setProfileId(rs.getInt("profile_id"));
+                review.setUsername(rs.getString("username"));
 
                 reviews.add(review);
             }

@@ -1,7 +1,9 @@
 package com.gamereview.controller;
 
 import com.gamereview.dao.ReviewDAO;
+import com.gamereview.model.Profile;
 import com.gamereview.model.Review;
+import com.gamereview.util.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,6 +27,10 @@ public class HomeController {
 
     @FXML
     public void initialize() {
+        if (UserSession.getInstance() != null && UserSession.getInstance().getUser() != null) {
+            Profile user = UserSession.getInstance().getUser();
+            System.out.println("Bem-vindo de volta, @" + user.getUsername() + "!");
+        }
         loadReviews(reviewDAO.listReviews());
     }
 
@@ -60,7 +66,15 @@ public class HomeController {
     @FXML
     private void handleCreateReview() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource())
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gamereview/view/reviews/createReview.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) vboxReviewsContainer.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Erro ao abrir a tela de criação de review!");
+            e.printStackTrace();
         }
     }
 

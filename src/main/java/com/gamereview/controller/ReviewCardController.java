@@ -33,6 +33,6 @@ public class ReviewCardController {
 
         lblText.setText(review.getText());
 
-        int idUser = review.getProfileId();
+        lblUser.setText(review.getUsername());
     }
 }
