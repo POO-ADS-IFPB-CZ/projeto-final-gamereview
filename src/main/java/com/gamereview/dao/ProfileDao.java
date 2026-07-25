@@ -1,4 +1,4 @@
-package com.gamereview.controller;
+package com.gamereview.dao;
 
 import com.gamereview.util.ConnectionFactory;
 import com.gamereview.model.Profile;
@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProfileController {
+public class ProfileDao {
 
     public boolean createProfile(Profile profile) {
 
@@ -83,5 +83,69 @@ public class ProfileController {
         return null;
     }
 
+    public boolean update(Profile profile) {
 
+        String checkEmail = """
+        SELECT id
+        FROM profile
+        WHERE email = ? AND id <> ?
+        """;
+
+        String sql = """
+        UPDATE profile 
+        SET username = ?, email = ?, password = ?
+        WHERE id = ?
+        """;
+
+        try(Connection connection = ConnectionFactory.getConnection()) {
+
+            PreparedStatement checkStmt = connection.prepareStatement(checkEmail);
+
+            checkStmt.setString(1, profile.getEmail());
+            checkStmt.setInt(2, profile.getId());
+
+            ResultSet result = checkStmt.executeQuery();
+
+            if(result.next()) {
+                return false;
+            }
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setString(1, profile.getUsername());
+            stmt.setString(2, profile.getEmail());
+            stmt.setString(3, profile.getPassword());
+            stmt.setInt(4, profile.getId());
+
+            int rows = stmt.executeUpdate();
+
+            return rows > 0;
+
+        } catch(SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+    }
+
+    public void delete(int id) {
+
+        String sql = """
+        DELETE FROM profile
+        WHERE id = ?
+        """;
+
+        try(Connection connection = ConnectionFactory.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch(SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
 }

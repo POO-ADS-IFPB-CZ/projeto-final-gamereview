@@ -1,5 +1,6 @@
 package com.gamereview.controller;
 
+import com.gamereview.dao.ProfileDao;
 import com.gamereview.model.Profile;
 import com.gamereview.util.UserSession;
 import javafx.fxml.FXML;
@@ -10,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,9 +41,9 @@ public class LoginController {
             return;
         }
 
-        ProfileController profileController = new ProfileController();
+        ProfileDao profileDao = new ProfileDao();
 
-        Profile profile = profileController.login(email, password);
+        Profile profile = profileDao.login(email, password);
 
         if (profile != null) {
             try {
