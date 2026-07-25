@@ -20,8 +20,6 @@ import java.util.List;
 public class HomeController {
 
     @FXML private VBox vboxReviewsContainer;
-    @FXML private TextField txtSearch;
-    @FXML private Label lblWelcome;
 
     private final ReviewDAO reviewDAO = new ReviewDAO();
 

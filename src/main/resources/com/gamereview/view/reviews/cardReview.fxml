@@ -3,40 +3,36 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="8.0" prefWidth="500.0"
-      style="-fx-background-color: #ffffff; -fx-background-radius: 8px; -fx-border-color: #e0e0e0; -fx-border-radius: 8px; -fx-border-width: 1px;"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+<VBox spacing="10.0" styleClass="input-field" stylesheets="@../style.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.gamereview.controller.ReviewCardController">
-
     <padding>
-        <Insets top="15.0" right="15.0" bottom="15.0" left="15.0" />
+        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
     </padding>
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label fx:id="lblGameTitle" styleClass="title-label" text="Nome do Jogo" style="-fx-font-size: 18px;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblRating" styleClass="btn-login" text="5.0"
+                       style="-fx-padding: 4 10 4 10; -fx-font-size: 12px; -fx-font-weight: bold;" />
+            </children>
+        </HBox>
 
-    <!-- Cabeçalho: Título e Nota -->
-    <HBox alignment="CENTER_LEFT" spacing="10.0">
-        <Label fx:id="lblUser" text="Nome do Jogo"
-        style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1a1a1a;" HBox.hgrow="ALWAYS" />
-    </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label fx:id="lblUser" styleClass="checkbox-text" text="Por: @usuario" style="-fx-font-weight: bold;" />
+                <Label text="•" styleClass="checkbox-text" />
+                <Label fx:id="lblPlatform" styleClass="checkbox-text" text="PC" />
+                <Label text="•" styleClass="checkbox-text" />
+                <Label fx:id="lblDate" styleClass="checkbox-text" text="25/07/2026" style="-fx-opacity: 0.7;" />
+            </children>
+        </HBox>
 
-    <HBox>
-        <Label fx:id="lblGameTitle" text="Nome do Jogo"
-               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1a1a1a;" HBox.hgrow="ALWAYS" />
-        <Label fx:id="lblRating" text="★ 5.0"
-               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #f39c12;" />
-    </HBox>
-
-    <!-- Subtítulo: Plataforma e Data -->
-    <HBox alignment="CENTER_LEFT" spacing="15.0">
-        <Label fx:id="lblPlatform" text="Plataforma: PC"
-               style="-fx-font-size: 12px; -fx-text-fill: #666666;" />
-        <Label fx:id="lblDate" text="24/07/2026"
-               style="-fx-font-size: 12px; -fx-text-fill: #999999;" />
-    </HBox>
-
-    <!-- Conteúdo da Review -->
-    <Label fx:id="lblText" text="Texto da análise do jogo..." wrapText="true"
-           style="-fx-font-size: 13px; -fx-text-fill: #333333;" />
-
+        <Label fx:id="lblText" wrapText="true" styleClass="checkbox-text"
+               style="-fx-font-size: 13px; -fx-line-spacing: 3px;" />
+    </children>
 </VBox>
