@@ -5,8 +5,13 @@ import com.gamereview.model.Profile;
 import com.gamereview.model.Review;
 import com.gamereview.util.UserSession;
 import javafx.fxml.FXML;
+import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class ReviewController {
@@ -57,8 +62,21 @@ public class ReviewController {
             reviewDAO.save(newReview);
             showMessage("Review publicada com sucesso!", false);
             clearForms();
+            handleBack();
         } catch (Exception e) {
             showMessage("Erro ao salvar review no banco de dados.", true);
+        }
+    }
+
+    @FXML
+    private void handleBack() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/gamereview/view/home.fxml"));
+            Stage stage = (Stage) txtGameTitle.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

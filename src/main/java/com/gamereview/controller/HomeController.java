@@ -27,10 +27,6 @@ public class HomeController {
 
     @FXML
     public void initialize() {
-        if (UserSession.getInstance() != null && UserSession.getInstance().getUser() != null) {
-            Profile user = UserSession.getInstance().getUser();
-            System.out.println("Bem-vindo de volta, @" + user.getUsername() + "!");
-        }
         loadReviews(reviewDAO.listReviews());
     }
 
