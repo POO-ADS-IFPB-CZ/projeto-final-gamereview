@@ -47,25 +47,34 @@ public class ReviewController {
             return;
         }
 
-        int profileIdload = user.getId();
-
-        Review newReview = new Review(
-                title,
-                platform,
-                rating,
-                content,
-                LocalDate.now(),
-                profileIdload
-        );
-
-        try {
+        if (reviewToEdit == null) {
+            Review newReview = new Review(title, platform, rating, content, LocalDate.now(), user.getId());
             reviewDAO.save(newReview);
-            showMessage("Review publicada com sucesso!", false);
-            clearForms();
-            handleBack();
-        } catch (Exception e) {
-            showMessage("Erro ao salvar review no banco de dados.", true);
+            showMessage("Review criada com sucesso!", false);
+        } else {
+            reviewToEdit.setGameTitle(title);
+            reviewToEdit.setPlatform(platform);
+            reviewToEdit.setRating(rating);
+            reviewToEdit.setText(content);
+
+            reviewDAO.update(reviewToEdit);
+            showMessage("Review atualizada com sucesso!", false);
         }
+
+        clearForms();
+        handleBack();
+    }
+
+    private Review reviewToEdit = null;
+
+    public void setReviewToEdit(Review review) {
+        this.reviewToEdit = review;
+        txtGameTitle.setText(review.getGameTitle());
+        txtPlatform.setText(review.getPlatform());
+        cbRating.setValue(review.getRating());
+        txtReviewContent.setText(review.getText());
+
+        lblMessage.setText("Editando review de " + review.getGameTitle());
     }
 
     @FXML

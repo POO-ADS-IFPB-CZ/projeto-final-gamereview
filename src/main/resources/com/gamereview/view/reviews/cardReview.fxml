@@ -32,8 +32,8 @@
                 <Label fx:id="lblDate" styleClass="checkbox-text" text="25/07/2026" style="-fx-opacity: 0.7;" />
             </children>
             <children>
-                <Button fx:id="btnUpd" style="btn-login" text="Editar"/>
-                <Button fx:id="btnDel" style="btn-login" text="Excluir"/>
+                <Button fx:id="btnUpd" styleClass="btn-login" text="Editar"/>
+                <Button fx:id="btnDel" styleClass="btn-login" text="Excluir"/>
             </children>
         </HBox>
 
