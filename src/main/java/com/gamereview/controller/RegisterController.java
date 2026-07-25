@@ -33,6 +33,26 @@ public class RegisterController {
         profile.setEmail(email);
         profile.setPassword(password);
 
+        if (username.isBlank() || email.isBlank() || password.isBlank()) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration");
+            alert.setHeaderText(null);
+            alert.setContentText("Fill in all fields.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (!email.contains("@") || !email.contains(".")) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration");
+            alert.setHeaderText(null);
+            alert.setContentText("Enter a valid email address.");
+            alert.showAndWait();
+            return;
+        }
+
         ProfileController controller = new ProfileController();
 
         boolean success = controller.createProfile(profile);
