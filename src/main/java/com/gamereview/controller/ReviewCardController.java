@@ -13,6 +13,7 @@ public class ReviewCardController {
     @FXML private Label lblPlatform;
     @FXML private Label lblDate;
     @FXML private Label lblText;
+    @FXML private Label lblUser;
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -28,5 +29,7 @@ public class ReviewCardController {
         }
 
         lblText.setText(review.getText());
+
+        int idUser = review.getProfileId();
     }
 }
