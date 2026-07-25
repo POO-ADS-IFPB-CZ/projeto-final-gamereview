@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="650.0" prefWidth="950.0" styleClass="main-window" stylesheets="@../style.css"
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.gamereview.controller.ReviewController">
+    <children>
+        <VBox maxHeight="540.0" maxWidth="500.0" spacing="15.0" styleClass="login-card">
+            <padding>
+                <Insets bottom="30.0" left="35.0" right="35.0" top="30.0" />
+            </padding>
+            <children>
+                <Label styleClass="title-label" text="CRIAR NOVA REVIEW" />
+
+                <Label fx:id="lblMessage" styleClass="checkbox-text" />
+
+                <VBox spacing="5.0">
+                    <children>
+                        <Label styleClass="checkbox-text" text="Título do Jogo" />
+                        <TextField fx:id="txtGameTitle" prefHeight="35.0" promptText="Ex: Elden Ring" styleClass="input-field" />
+                    </children>
+                </VBox>
+
+                <HBox spacing="15.0">
+                    <children>
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="checkbox-text" text="Plataforma" />
+                                <TextField fx:id="txtPlatform" prefHeight="35.0" promptText="PC, PS5, Xbox..." styleClass="input-field" />
+                            </children>
+                        </VBox>
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="checkbox-text" text="Nota (1.0 a 5.0)" />
+                                <ComboBox fx:id="cbRating" prefHeight="35.0" prefWidth="150.0" promptText="Selecione" styleClass="input-field" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label styleClass="checkbox-text" text="Sua Análise" />
+                        <TextArea fx:id="txtReviewContent" prefHeight="120.0" styleClass="input-field" wrapText="true" />
+                    </children>
+                </VBox>
+
+                <Region prefHeight="10.0" />
+
+                <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="input-field" text="Cancelar" onAction="#handleBack" />
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" styleClass="btn-login" text="PUBLICAR" onAction="#handleSaveReview" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
