@@ -11,6 +11,7 @@ public class Review {
     private String text;
     private LocalDate reviewDate;
     private int profileId;
+    private String username;
 
     public Review() {
     }
@@ -80,4 +81,13 @@ public class Review {
     public void setProfileId(int profileId) {
         this.profileId = profileId;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 }

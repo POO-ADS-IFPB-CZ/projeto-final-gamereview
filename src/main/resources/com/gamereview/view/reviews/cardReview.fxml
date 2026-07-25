@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<VBox spacing="10.0" styleClass="input-field" stylesheets="@../style.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gamereview.controller.ReviewCardController">
+    <padding>
+        <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+    </padding>
+    <children>
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label fx:id="lblGameTitle" styleClass="title-label" text="Nome do Jogo" style="-fx-font-size: 18px;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblRating" styleClass="btn-login" text="5.0"
+                       style="-fx-padding: 4 10 4 10; -fx-font-size: 12px; -fx-font-weight: bold;" />
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <Label fx:id="lblUser" styleClass="checkbox-text" text="Por: @usuario" style="-fx-font-weight: bold;" />
+                <Label text="•" styleClass="checkbox-text" />
+                <Label fx:id="lblPlatform" styleClass="checkbox-text" text="PC" />
+                <Label text="•" styleClass="checkbox-text" />
+                <Label fx:id="lblDate" styleClass="checkbox-text" text="25/07/2026" style="-fx-opacity: 0.7;" />
+            </children>
+            <children>
+                <Button fx:id="btnUpd" styleClass="btn-login" text="Editar"/>
+                <Button fx:id="btnDel" styleClass="btn-login" text="Excluir"/>
+            </children>
+        </HBox>
+
+        <Label fx:id="lblText" wrapText="true" styleClass="checkbox-text"
+               style="-fx-font-size: 13px; -fx-line-spacing: 3px;" />
+    </children>
+</VBox>

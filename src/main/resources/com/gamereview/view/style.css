@@ -51,10 +51,6 @@
     -fx-font-size: 11px;
 }
 
-.input-field:focused {
-    -fx-border-color: #00e5ff;
-}
-
 
 .checkbox-text {
     -fx-text-fill: #828c9a;
