@@ -56,7 +56,7 @@ public class ReviewCardController {
     }
 
     public void handleDeleteReview(Review review) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja realmente excluir esta review?", ButtonType.YES, ButtonType.NO);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you really want to delete this review?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
@@ -88,7 +88,7 @@ public class ReviewCardController {
             stage.show();
 
         } catch (IOException e) {
-            System.err.println("Erro ao abrir tela para editar review: " + e.getMessage());
+            System.err.println("Error opening screen to edit review: " + e.getMessage());
             e.printStackTrace();
         }
     }

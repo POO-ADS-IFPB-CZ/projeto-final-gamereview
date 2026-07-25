@@ -23,12 +23,13 @@
 
                 <Region prefWidth="30.0" />
 
-                <Button fx:id="btnFeed" alignment="CENTER" prefHeight="35.0" prefWidth="130.0" styleClass="btn-login" text="Feed Principal" />
-                <Button fx:id="btnPerfil" alignment="CENTER" prefHeight="35.0" prefWidth="120.0" styleClass="input-field" text="Meu Perfil" />
+                <Button fx:id="btnFeed" alignment="CENTER" prefHeight="35.0" prefWidth="130.0" styleClass="btn-login" text="Feed" />
+                <Button fx:id="btnProfile" alignment="CENTER" prefHeight="35.0" prefWidth="120.0" styleClass="input-field" text="My Profile"
+                        onAction="#handleProfile" />
 
                 <Region HBox.hgrow="ALWAYS" />
 
-                <Button fx:id="btnSair" alignment="CENTER" prefHeight="30.0" prefWidth="100.0" styleClass="btn-login" text="LOGOUT" onAction="#handleLogout" />
+                <Button fx:id="btnLogout" alignment="CENTER" prefHeight="30.0" prefWidth="100.0" styleClass="btn-login" text="LOGOUT" onAction="#handleLogout" />
             </children>
         </HBox>
     </top>
@@ -44,13 +45,13 @@
                     <children>
                         <VBox HBox.hgrow="ALWAYS">
                             <children>
-                                <Label styleClass="title-label" text="FEED DE REVIEWS" />
-                                <Label fx:id="lblWelcome" styleClass="checkbox-text" text="Confira as últimas análises da comunidade" />
+                                <Label styleClass="title-label" text="REVIEWS" />
+                                <Label fx:id="lblWelcome" styleClass="checkbox-text" text="Check out the latest community reviews." />
                             </children>
                         </VBox>
 
 
-                        <Button fx:id="btnCriarReview" alignment="CENTER" prefHeight="35.0" styleClass="btn-login" text="➕ Nova Review" onAction="#handleCreateReview" />
+                        <Button fx:id="btnCreateReview" alignment="CENTER" prefHeight="35.0" styleClass="btn-login" text="➕Review" onAction="#handleCreateReview" />
                     </children>
                 </HBox>
 

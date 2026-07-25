@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import javafx.scene.control.Button;
 
 public class HomeController {
 
@@ -82,5 +83,31 @@ public class HomeController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private Button btnProfile;
+
+    @FXML
+    public void handleProfile() {
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/gamereview/view/profile.fxml")
+            );
+
+            Parent root = loader.load();
+
+            Stage stage = (Stage) btnProfile.getScene().getWindow();
+
+            stage.setScene(new Scene(root));
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
