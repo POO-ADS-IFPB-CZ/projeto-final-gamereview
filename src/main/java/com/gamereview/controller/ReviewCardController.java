@@ -62,6 +62,15 @@ public class ReviewCardController {
         if (alert.getResult() == ButtonType.YES) {
             ReviewDAO reviewDao = new ReviewDAO();
             reviewDao.delete(review.getId(), review.getProfileId());
+
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/com/gamereview/view/home.fxml"));
+                Stage stage = (Stage) lblGameTitle.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

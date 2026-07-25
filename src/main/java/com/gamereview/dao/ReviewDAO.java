@@ -81,7 +81,7 @@ public class ReviewDAO {
             SELECT r.id, r.game_title, r.rating, r.platform, r.text, r.review_date, r.profile_id, p.username
             FROM review r
             INNER JOIN profile p ON r.profile_id = p.id
-            ORDER BY r.review_date DESC
+            ORDER BY r.rating DESC, r.game_title ASC
             """;
         List<Review> reviews = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
