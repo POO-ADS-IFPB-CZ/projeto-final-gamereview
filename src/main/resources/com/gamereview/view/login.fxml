@@ -54,6 +54,9 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
+                  <Hyperlink
+                          text="Don't have an account yet? Register here"
+                          onAction="#toRegister"/>
                </children>
             </VBox>
          </children>

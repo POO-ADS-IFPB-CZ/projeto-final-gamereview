@@ -30,6 +30,16 @@ public class LoginController {
         String email = txtEmail.getText();
         String password = txtPassword.getText();
 
+        if (email.isBlank() || password.isBlank()) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Login");
+            alert.setHeaderText(null);
+            alert.setContentText("Fill in all fields.");
+            alert.showAndWait();
+            return;
+        }
+
         ProfileController profileController = new ProfileController();
 
         Profile profile = profileController.login(email, password);
@@ -46,7 +56,22 @@ public class LoginController {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("0");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Login");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid email or password.");
+            alert.showAndWait();
         }
+
+
+    }
+
+    @FXML
+    public void toRegister() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gamereview/view/register.fxml"));
+        Scene scene = new Scene(loader.load());
+
+        Stage stage = (Stage) txtEmail.getScene().getWindow();
+        stage.setScene(scene);
     }
 }
