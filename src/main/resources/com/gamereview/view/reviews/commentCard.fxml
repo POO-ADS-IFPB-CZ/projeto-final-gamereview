@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox spacing="4.0" styleClass="input-field" stylesheets="@../style.css"
@@ -11,7 +13,13 @@
         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
     </padding>
     <children>
-        <Label fx:id="lblUser" styleClass="checkbox-text" />
+        <HBox spacing="10.0">
+            <children>
+                <Label fx:id="lblUser" styleClass="checkbox-text" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblDate" styleClass="checkbox-text" style="-fx-opacity: 0.7;" />
+            </children>
+        </HBox>
         <Label fx:id="lblText" wrapText="true" styleClass="checkbox-text" />
     </children>
 </VBox>

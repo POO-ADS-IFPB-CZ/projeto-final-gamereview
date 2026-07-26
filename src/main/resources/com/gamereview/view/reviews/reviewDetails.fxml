@@ -21,13 +21,15 @@
 
         <Label styleClass="title-label" text="Comentários" />
 
+        <TextArea fx:id="txtNewComment" promptText="Escreva um comentário..." prefHeight="60.0"
+                  styleClass="input-field" wrapText="true"
+                  style="-fx-text-fill: black; -fx-control-inner-background: white;" />
+        <Button fx:id="btnPublishComment" styleClass="btn-login" text="Comentar" onAction="#handlePublishComment" />
+
         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
             <content>
                 <VBox fx:id="vboxCommentsContainer" spacing="10.0" />
             </content>
         </ScrollPane>
-
-        <TextArea fx:id="txtNewComment" promptText="Escreva um comentário..." prefHeight="60.0" styleClass="input-field" wrapText="true" />
-        <Button fx:id="btnPublishComment" styleClass="btn-login" text="Comentar" onAction="#handlePublishComment" />
     </children>
 </VBox>
