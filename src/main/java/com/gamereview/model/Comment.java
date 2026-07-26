@@ -9,6 +9,7 @@ public class Comment {
     private LocalDate commentDate;
     private int profileId;
     private int reviewId;
+    private String username;
 
     public Comment() {
     }
@@ -19,6 +20,14 @@ public class Comment {
         this.commentDate = commentDate;
         this.profileId = profileId;
         this.reviewId = reviewId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getId() {

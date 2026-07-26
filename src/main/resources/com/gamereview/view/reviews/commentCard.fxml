@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="4.0" styleClass="input-field" stylesheets="@../style.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gamereview.controller.CommentCardController">
+    <padding>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </padding>
+    <children>
+        <HBox spacing="10.0">
+            <children>
+                <Label fx:id="lblUser" styleClass="checkbox-text" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblDate" styleClass="checkbox-text" style="-fx-opacity: 0.7;" />
+            </children>
+        </HBox>
+
+        <Label fx:id="lblText" wrapText="true" styleClass="checkbox-text" />
+
+        <TextArea fx:id="txtEditComment" wrapText="true" prefHeight="60.0" styleClass="input-field"
+                  style="-fx-text-fill: black; -fx-control-inner-background: white;"
+                  visible="false" managed="false" />
+
+        <HBox spacing="10.0">
+            <children>
+                <Button fx:id="btnEdit" styleClass="btn-login" text="Editar" onAction="#handleEdit" />
+                <Button fx:id="btnDelete" styleClass="btn-login" text="Excluir" onAction="#handleDelete" />
+                <Button fx:id="btnSaveEdit" styleClass="btn-login" text="Salvar" onAction="#handleSaveEdit"
+                        visible="false" managed="false" />
+                <Button fx:id="btnCancelEdit" styleClass="input-field" text="Cancelar" onAction="#handleCancelEdit"
+                        visible="false" managed="false" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
