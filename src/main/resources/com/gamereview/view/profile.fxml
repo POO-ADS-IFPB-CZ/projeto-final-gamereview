@@ -5,12 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="600.0" prefWidth="800.0"
+<StackPane prefHeight="650.0" prefWidth="950.0"
            styleClass="main-window"
            stylesheets="@style.css"
            xmlns="http://javafx.com/javafx/21"
@@ -18,83 +16,108 @@
            fx:controller="com.gamereview.controller.UserProfileController">
     <children>
 
+        <!-- CARTÃO CENTRALIZADO (Estilo moderno com largura controlada) -->
         <VBox alignment="CENTER"
-              prefHeight="320.0"
-              prefWidth="380.0"
-              spacing="15.0"
-              styleClass="card-bottom">
+              maxHeight="480.0"
+              maxWidth="420.0"
+              spacing="20.0"
+              styleClass="login-card">
 
             <padding>
-                <Insets bottom="30.0"
+                <Insets bottom="35.0"
                         left="40.0"
                         right="40.0"
-                        top="30.0"/>
+                        top="35.0"/>
             </padding>
-
 
             <children>
 
-
+                <!-- TÍTULO COM O ESTILO NEON -->
                 <Label text="MY PROFILE"
-                       styleClass="title-label"/>
+                       styleClass="neon-title"/>
 
+                <!-- SEÇÃO DE VISUALIZAÇÃO DO PERFIL -->
                 <VBox fx:id="profileView"
                       alignment="CENTER"
-                      spacing="15">
+                      spacing="18.0">
 
-                    <Label fx:id="lblName"
-                           text="Username"
-                           styleClass="profile-text"/>
+                    <children>
+                        <VBox alignment="CENTER" spacing="5.0" style="-fx-padding: 5 0 10 0;">
+                            <children>
+                                <Label fx:id="lblName"
+                                       text="Username"
+                                       styleClass="profile-text"
+                                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #00e5ff;" />
 
-                    <Label fx:id="lblEmail"
-                           text="Email"
-                           styleClass="profile-text"/>
+                                <Label fx:id="lblEmail"
+                                       text="Email"
+                                       styleClass="profile-text"
+                                       style="-fx-opacity: 0.8; -fx-font-size: 12px;" />
+                            </children>
+                        </VBox>
 
-                    <Button text="EDIT PROFILE"
-                            prefWidth="150"
-                            styleClass="btn-login"
-                            onAction="#editProfile"/>
+                        <Button text="EDIT PROFILE"
+                                prefWidth="180.0" prefHeight="35.0"
+                                styleClass="btn-login"
+                                onAction="#editProfile"/>
 
-                    <Button text="HOME"
-                            prefWidth="150"
-                            styleClass="btn-login"
-                            onAction="#Home"/>
+                        <Button text="HOME"
+                                prefWidth="180.0" prefHeight="35.0"
+                                styleClass="input-field"
+                                onAction="#Home"
+                                style="-fx-cursor: hand; -fx-text-fill: #ffffff;" />
 
+                    </children>
                 </VBox>
 
+                <!-- SEÇÃO DE EDIÇÃO DO PERFIL -->
                 <VBox fx:id="profileEdit"
                       alignment="CENTER"
-                      spacing="15"
+                      spacing="12.0"
                       visible="false"
                       managed="false">
 
-                    <TextField fx:id="txtName"
-                               promptText="NAME"
-                               styleClass="input-field"/>
+                    <children>
+                        <TextField fx:id="txtName"
+                                   promptText="NAME"
+                                   styleClass="input-field"
+                                   prefHeight="35.0" />
 
+                        <TextField fx:id="txtEmail"
+                                   promptText="EMAIL"
+                                   styleClass="input-field"
+                                   prefHeight="35.0" />
 
-                    <TextField fx:id="txtEmail"
-                               promptText="EMAIL"
-                               styleClass="input-field"/>
+                        <PasswordField fx:id="txtPassword"
+                                       promptText="PASSWORD"
+                                       styleClass="input-field"
+                                       prefHeight="35.0" />
 
-                    <PasswordField fx:id="txtPassword"
-                                   promptText="PASSWORD"
-                                   styleClass="input-field"/>
+                        <Button text="SAVE CHANGES"
+                                prefWidth="180.0" prefHeight="35.0"
+                                styleClass="btn-login"
+                                onAction="#saveProfile">
+                            <VBox.margin>
+                                <Insets top="5.0" />
+                            </VBox.margin>
+                        </Button>
 
-                    <Button text="SAVE CHANGES"
-                            styleClass="btn-login"
-                            onAction="#saveProfile"/>
+                        <Button text="DELETE ACCOUNT"
+                                prefWidth="180.0" prefHeight="33.0"
+                                styleClass="input-field"
+                                onAction="#deleteProfile"
+                                style="-fx-text-fill: #ff5555;" />
 
-                    <Button text="DELETE ACCOUNT"
-                            styleClass="btn-login"
-                            onAction="#deleteProfile"/>
+                        <Button text="BACK"
+                                prefWidth="180.0" prefHeight="33.0"
+                                styleClass="input-field"
+                                onAction="#back"/>
 
-                    <Button text="BACK"
-                            styleClass="btn-login"
-                            onAction="#back"/>
-
+                    </children>
                 </VBox>
+
             </children>
         </VBox>
+
     </children>
 </StackPane>

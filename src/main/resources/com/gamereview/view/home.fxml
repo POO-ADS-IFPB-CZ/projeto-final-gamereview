@@ -13,6 +13,7 @@
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.gamereview.controller.HomeController">
 
+    <!-- MENU SUPERIOR -->
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="65.0" spacing="15.0" styleClass="login-card" BorderPane.alignment="CENTER">
             <padding>
@@ -34,36 +35,42 @@
         </HBox>
     </top>
 
+    <!-- CONTEÚDO CENTRALIZADO DO FEED -->
     <center>
-        <VBox spacing="20.0" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
             </padding>
             <children>
-
-                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                <!-- CONTAINER CENTRAL COM LARGURA DELIMITADA (Para os cards não esticarem demais) -->
+                <VBox alignment="TOP_CENTER" maxWidth="750.0" spacing="15.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox HBox.hgrow="ALWAYS">
+                        <!-- CABEÇALHO DO FEED (Reviews + Botão Criar) -->
+                        <HBox alignment="CENTER_LEFT" spacing="15.0" maxWidth="750.0">
                             <children>
-                                <Label styleClass="title-label" text="REVIEWS" />
-                                <Label fx:id="lblWelcome" styleClass="checkbox-text" text="Check out the latest community reviews." />
+                                <VBox HBox.hgrow="ALWAYS">
+    <children>
+        <Label styleClass="neon-title" text="REVIEWS" />
+        <Label fx:id="lblWelcome" styleClass="checkbox-text" text="Check out the latest community reviews." />
+    </children>
+</VBox>
+
+                                <Button fx:id="btnCreateReview" alignment="CENTER" prefHeight="35.0" styleClass="btn-login" text="➕Review" onAction="#handleCreateReview" />
                             </children>
-                        </VBox>
+                        </HBox>
 
-
-                        <Button fx:id="btnCreateReview" alignment="CENTER" prefHeight="35.0" styleClass="btn-login" text="➕Review" onAction="#handleCreateReview" />
+                        
+                        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS" maxWidth="750.0">
+                            <content>
+                                <VBox fx:id="vboxReviewsContainer" alignment="TOP_CENTER" spacing="15.0" style="-fx-background-color: transparent;">
+                                    <padding>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </padding>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
                     </children>
-                </HBox>
-
-                <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
-                    <content>
-                        <VBox fx:id="vboxReviewsContainer" spacing="15.0">
-                            <padding>
-                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                            </padding>
-                        </VBox>
-                    </content>
-                </ScrollPane>
+                </VBox>
 
             </children>
         </VBox>

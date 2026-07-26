@@ -15,51 +15,52 @@
            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="com.gamereview.controller.ReviewController">
     <children>
-        <VBox maxHeight="540.0" maxWidth="500.0" spacing="15.0" styleClass="login-card">
+        <VBox maxHeight="510.0" maxWidth="500.0" spacing="12.0" styleClass="login-card">
             <padding>
-                <Insets bottom="30.0" left="35.0" right="35.0" top="30.0" />
+                <Insets bottom="25.0" left="35.0" right="35.0" top="25.0" />
             </padding>
             <children>
-                <Label styleClass="title-label" text="NEW REVIEW" />
+                <Label styleClass="neon-title" text="NEW REVIEW" />
 
                 <Label fx:id="lblMessage" styleClass="checkbox-text" />
 
-                <VBox spacing="5.0">
+                <VBox spacing="4.0">
                     <children>
-                        <Label styleClass="checkbox-text" text="Game title" />
+                        <Label styleClass="checkbox-text" text="Game title" style="-fx-font-weight: bold;" />
                         <TextField fx:id="txtGameTitle" prefHeight="35.0" promptText="Ex: Elden Ring" styleClass="input-field" />
                     </children>
                 </VBox>
 
                 <HBox spacing="15.0">
                     <children>
-                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label styleClass="checkbox-text" text="Plataform" />
+                                <Label styleClass="checkbox-text" text="Plataform" style="-fx-font-weight: bold;" />
                                 <TextField fx:id="txtPlatform" prefHeight="35.0" promptText="PC, PS5, Xbox..." styleClass="input-field" />
                             </children>
                         </VBox>
-                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                        <VBox spacing="4.0" HBox.hgrow="ALWAYS">
                             <children>
-                                <Label styleClass="checkbox-text" text="Rating" />
-                                <ComboBox fx:id="cbRating" prefHeight="35.0" prefWidth="150.0" promptText="Choose" styleClass="input-field" />
+                                <Label styleClass="checkbox-text" text="Rating" style="-fx-font-weight: bold;" />
+                                <!-- CORREÇÃO APLICADA ABAIXO -->
+                                <ComboBox fx:id="cbRating" prefHeight="35.0" prefWidth="210.0" promptText="Choose" styleClass="input-field" style="-fx-text-fill: white;" />
                             </children>
                         </VBox>
                     </children>
                 </HBox>
 
-                <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+                <VBox spacing="4.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <Label styleClass="checkbox-text" text="Your Review" />
-                        <TextArea fx:id="txtReviewContent" prefHeight="120.0" styleClass="input-field" wrapText="true" />
+                        <Label styleClass="checkbox-text" text="Your Review" style="-fx-font-weight: bold;" />
+                        <TextArea fx:id="txtReviewContent" prefHeight="100.0" styleClass="input-field" wrapText="true" style="-fx-text-fill: white; -fx-control-inner-background: #252b34;" />
                     </children>
                 </VBox>
 
-                <Region prefHeight="10.0" />
+                <Region prefHeight="2.0" />
 
                 <HBox alignment="CENTER_RIGHT" spacing="15.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="input-field" text="Cancel" onAction="#handleBack" />
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="input-field" text="Cancel" onAction="#handleBack" style="-fx-cursor: hand;" />
                         <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" styleClass="btn-login" text="Publish" onAction="#handleSaveReview" />
                     </children>
                 </HBox>
