@@ -1,0 +1,7 @@
+package com.gamereview;
+
+public class Launcher {
+    public static void main(String[] args) {
+        App.main(args); // Chama o seu arquivo original
+    }
+}

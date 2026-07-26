@@ -1,9 +1,11 @@
 package com.gamereview.controller;
 
+import com.gamereview.dao.LikeDAO;
 import com.gamereview.dao.ReviewDAO;
 import com.gamereview.model.Profile;
 import com.gamereview.model.Review;
 import com.gamereview.util.UserSession;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,11 +26,24 @@ public class ReviewCardController {
     @FXML private Label lblUser;
     @FXML private Button btnDel;
     @FXML private Button btnUpd;
+    
+    @FXML private Button btnLike;
+    @FXML private Label lblLikeCount;
+
+    private int currentReviewId;
+    private int loggedUserId;
+    private LikeDAO likeDAO = new LikeDAO();
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void setReviewData(Review review) {
         Profile user = UserSession.getInstance().getUser();
+        
+        this.currentReviewId = review.getId();
+        if (user != null) {
+            this.loggedUserId = user.getId();
+        }
+
         lblGameTitle.setText(review.getGameTitle());
         lblRating.setText(String.format("%.1f", review.getRating()));
         lblPlatform.setText(review.getPlatform().toUpperCase());
@@ -40,8 +55,9 @@ public class ReviewCardController {
         }
 
         lblText.setText(review.getText());
-
         lblUser.setText(review.getUsername());
+
+        updateLikeVisuals();
 
         if (user != null && user.getId() == review.getProfileId()) {
             btnDel.setVisible(true);
@@ -52,6 +68,33 @@ public class ReviewCardController {
         } else {
             btnDel.setVisible(false);
             btnUpd.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void handleLike(ActionEvent event) {
+        boolean isLiked = likeDAO.isLikedByUser(loggedUserId, currentReviewId);
+
+        if (isLiked) {
+            likeDAO.removeLike(loggedUserId, currentReviewId);
+        } else {
+            likeDAO.addLike(loggedUserId, currentReviewId);
+        }
+        
+        updateLikeVisuals();
+    }
+
+    private void updateLikeVisuals() {
+        int count = likeDAO.countLikes(currentReviewId);
+        lblLikeCount.setText(String.valueOf(count));
+        
+        if (loggedUserId > 0) {
+            boolean isLiked = likeDAO.isLikedByUser(loggedUserId, currentReviewId);
+            if (isLiked) {
+                btnLike.setStyle("-fx-background-color: #ff0055; -fx-text-fill: #ffffff;");
+            } else {
+                btnLike.setStyle("-fx-background-color: linear-gradient(to right, #00e5ff, #a65fec); -fx-text-fill: #ffffff;");
+            }
         }
     }
 
