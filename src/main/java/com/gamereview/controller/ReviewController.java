@@ -43,14 +43,14 @@ public class ReviewController {
                 platform == null || platform.isBlank() ||
                 rating == null || content == null || content.isBlank()) {
 
-            showMessage("Por favor, preencha todos os campos!", true);
+            showMessage("Fill in all the fields!", true);
             return;
         }
 
         if (reviewToEdit == null) {
             Review newReview = new Review(title, platform, rating, content, LocalDate.now(), user.getId());
             reviewDAO.save(newReview);
-            showMessage("Review criada com sucesso!", false);
+            showMessage("Review successfully created!", false);
         } else {
             reviewToEdit.setGameTitle(title);
             reviewToEdit.setPlatform(platform);
@@ -58,7 +58,7 @@ public class ReviewController {
             reviewToEdit.setText(content);
 
             reviewDAO.update(reviewToEdit);
-            showMessage("Review atualizada com sucesso!", false);
+            showMessage("Review successfully updated!", false);
         }
 
         clearForms();
@@ -74,7 +74,7 @@ public class ReviewController {
         cbRating.setValue(review.getRating());
         txtReviewContent.setText(review.getText());
 
-        lblMessage.setText("Editando review de " + review.getGameTitle());
+        lblMessage.setText("Editing review of " + review.getGameTitle());
     }
 
     @FXML

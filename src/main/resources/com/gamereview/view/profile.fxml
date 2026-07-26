@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="600.0" prefWidth="800.0"
+           styleClass="main-window"
+           stylesheets="@style.css"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.gamereview.controller.UserProfileController">
+    <children>
+
+        <VBox alignment="CENTER"
+              prefHeight="320.0"
+              prefWidth="380.0"
+              spacing="15.0"
+              styleClass="card-bottom">
+
+            <padding>
+                <Insets bottom="30.0"
+                        left="40.0"
+                        right="40.0"
+                        top="30.0"/>
+            </padding>
+
+
+            <children>
+
+
+                <Label text="MY PROFILE"
+                       styleClass="title-label"/>
+
+                <VBox fx:id="profileView"
+                      alignment="CENTER"
+                      spacing="15">
+
+                    <Label fx:id="lblName"
+                           text="Username"
+                           styleClass="profile-text"/>
+
+                    <Label fx:id="lblEmail"
+                           text="Email"
+                           styleClass="profile-text"/>
+
+                    <Button text="EDIT PROFILE"
+                            prefWidth="150"
+                            styleClass="btn-login"
+                            onAction="#editProfile"/>
+
+                    <Button text="HOME"
+                            prefWidth="150"
+                            styleClass="btn-login"
+                            onAction="#Home"/>
+
+                </VBox>
+
+                <VBox fx:id="profileEdit"
+                      alignment="CENTER"
+                      spacing="15"
+                      visible="false"
+                      managed="false">
+
+                    <TextField fx:id="txtName"
+                               promptText="NAME"
+                               styleClass="input-field"/>
+
+
+                    <TextField fx:id="txtEmail"
+                               promptText="EMAIL"
+                               styleClass="input-field"/>
+
+                    <PasswordField fx:id="txtPassword"
+                                   promptText="PASSWORD"
+                                   styleClass="input-field"/>
+
+                    <Button text="SAVE CHANGES"
+                            styleClass="btn-login"
+                            onAction="#saveProfile"/>
+
+                    <Button text="DELETE ACCOUNT"
+                            styleClass="btn-login"
+                            onAction="#deleteProfile"/>
+
+                    <Button text="BACK"
+                            styleClass="btn-login"
+                            onAction="#back"/>
+
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</StackPane>

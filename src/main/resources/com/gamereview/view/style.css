@@ -88,3 +88,7 @@
 .btn-login:hover {
     -fx-background-color: linear-gradient(to right, #33eeff, #bb82fa);
 }
+
+.profile-text {
+    -fx-text-fill: white;
+}

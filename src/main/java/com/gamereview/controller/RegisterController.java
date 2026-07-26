@@ -1,5 +1,6 @@
 package com.gamereview.controller;
 
+import com.gamereview.dao.ProfileDao;
 import com.gamereview.model.Profile;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +54,7 @@ public class RegisterController {
             return;
         }
 
-        ProfileController controller = new ProfileController();
+        ProfileDao controller = new ProfileDao();
 
         boolean success = controller.createProfile(profile);
 
