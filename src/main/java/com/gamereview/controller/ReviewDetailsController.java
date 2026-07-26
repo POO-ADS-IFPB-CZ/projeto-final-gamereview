@@ -46,7 +46,7 @@ public class ReviewDetailsController {
                 Node cardNode = loader.load();
 
                 CommentCardController cardController = loader.getController();
-                cardController.setCommentData(comment);
+                cardController.setCommentData(comment, review.getProfileId(), this::loadComments);
 
                 vboxCommentsContainer.getChildren().add(cardNode);
 

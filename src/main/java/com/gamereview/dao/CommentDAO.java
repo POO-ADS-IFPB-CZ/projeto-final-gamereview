@@ -30,14 +30,32 @@ public class CommentDAO {
         }
     }
 
-    public void delete(int commentId, int profileId) {
-        String sql = "DELETE FROM comment WHERE id = ? AND profile_id = ?";
+    public void update(int commentId, int profileId, String text) {
+        String sql = "UPDATE comment SET text = ? WHERE id = ? AND profile_id = ?";
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, text);
+            stmt.setInt(2, commentId);
+            stmt.setInt(3, profileId);
+
+            stmt.executeUpdate();
+            System.out.println("Comentário atualizado");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao atualizar comentário.", e);
+        }
+    }
+
+    public void delete(int commentId) {
+        String sql = "DELETE FROM comment WHERE id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, commentId);
-            stmt.setInt(2, profileId);
 
             stmt.executeUpdate();
             System.out.println("Comentário excluído com sucesso!");
