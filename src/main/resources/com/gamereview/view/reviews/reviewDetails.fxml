@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15.0" prefHeight="650.0" prefWidth="950.0" styleClass="main-window" stylesheets="@../style.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.gamereview.controller.ReviewDetailsController">
+    <padding>
+        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+    </padding>
+    <children>
+        <Button fx:id="btnBack" styleClass="input-field" text="Voltar" onAction="#handleBack" />
+
+        <Label fx:id="lblGameTitle" styleClass="title-label" />
+        <Label fx:id="lblText" wrapText="true" styleClass="checkbox-text" />
+
+        <Label styleClass="title-label" text="Comentários" />
+
+        <TextArea fx:id="txtNewComment" promptText="Escreva um comentário..." prefHeight="60.0"
+                  styleClass="input-field" wrapText="true"
+                  style="-fx-text-fill: black; -fx-control-inner-background: white;" />
+        <Button fx:id="btnPublishComment" styleClass="btn-login" text="Comentar" onAction="#handlePublishComment" />
+
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+            <content>
+                <VBox fx:id="vboxCommentsContainer" spacing="10.0" />
+            </content>
+        </ScrollPane>
+    </children>
+</VBox>

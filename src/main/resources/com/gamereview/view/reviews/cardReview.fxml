@@ -34,6 +34,7 @@
             <children>
                 <Button fx:id="btnUpd" styleClass="btn-login" text="Editar"/>
                 <Button fx:id="btnDel" styleClass="btn-login" text="Excluir"/>
+                <Button fx:id="btnComments" styleClass="btn-login" text="Comentários" onAction="#handleOpenComments"/>
             </children>
         </HBox>
 

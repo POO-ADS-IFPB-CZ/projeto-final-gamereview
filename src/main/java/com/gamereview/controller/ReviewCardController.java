@@ -24,10 +24,15 @@ public class ReviewCardController {
     @FXML private Label lblUser;
     @FXML private Button btnDel;
     @FXML private Button btnUpd;
+    @FXML private Button btnComments;
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+    private Review currentReview;
+
     public void setReviewData(Review review) {
+        this.currentReview = review;
+
         Profile user = UserSession.getInstance().getUser();
         lblGameTitle.setText(review.getGameTitle());
         lblRating.setText(String.format("%.1f", review.getRating()));
@@ -89,6 +94,25 @@ public class ReviewCardController {
 
         } catch (IOException e) {
             System.err.println("Error opening screen to edit review: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleOpenComments() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gamereview/view/reviews/reviewDetails.fxml"));
+            Parent root = loader.load();
+
+            ReviewDetailsController controller = loader.getController();
+            controller.setReviewData(currentReview);
+
+            Stage stage = (Stage) lblGameTitle.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            System.err.println("Erro ao abrir comentários: " + e.getMessage());
             e.printStackTrace();
         }
     }
