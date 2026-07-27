@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS review (
 CREATE TABLE IF NOT EXISTS comment (
     id SERIAL PRIMARY KEY,
     text TEXT NOT NULL,
-    comment_date DATE NOT NULL,
+    comment_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     profile_id INT NOT NULL,
     review_id INT NOT NULL,
 
