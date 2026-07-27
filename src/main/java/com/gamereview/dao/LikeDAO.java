@@ -8,11 +8,11 @@ import java.sql.SQLException;
 
 public class LikeDAO {
 
-    public void addLike(int userId, int reviewId) {
-        String sql = "INSERT INTO review_likes (user_id, review_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
+    public void addLike(int profileId, int reviewId) {
+        String sql = "INSERT INTO likes (profile_id, review_id) VALUES (?, ?) ON CONFLICT DO NOTHING";
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, userId);
+            stmt.setInt(1, profileId);
             stmt.setInt(2, reviewId);
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -20,11 +20,11 @@ public class LikeDAO {
         }
     }
 
-    public void removeLike(int userId, int reviewId) {
-        String sql = "DELETE FROM review_likes WHERE user_id = ? AND review_id = ?";
+    public void removeLike(int profileId, int reviewId) {
+        String sql = "DELETE FROM likes WHERE profile_id = ? AND review_id = ?";
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, userId);
+            stmt.setInt(1, profileId);
             stmt.setInt(2, reviewId);
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -32,14 +32,14 @@ public class LikeDAO {
         }
     }
 
-    public boolean isLikedByUser(int userId, int reviewId) {
-        String sql = "SELECT 1 FROM review_likes WHERE user_id = ? AND review_id = ?";
+    public boolean isLikedByUser(int profileId, int reviewId) {
+        String sql = "SELECT 1 FROM likes WHERE profile_id = ? AND review_id = ?";
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, userId);
+            stmt.setInt(1, profileId);
             stmt.setInt(2, reviewId);
             try (ResultSet rs = stmt.executeQuery()) {
-                return rs.next(); // Retorna true se encontrou o like
+                return rs.next();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,13 +48,13 @@ public class LikeDAO {
     }
 
     public int countLikes(int reviewId) {
-        String sql = "SELECT COUNT(*) FROM review_likes WHERE review_id = ?";
+        String sql = "SELECT COUNT(*) FROM likes WHERE review_id = ?";
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, reviewId);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getInt(1); // Retorna a quantidade de likes
+                    return rs.getInt(1);
                 }
             }
         } catch (SQLException e) {
