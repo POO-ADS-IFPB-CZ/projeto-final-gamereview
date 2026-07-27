@@ -16,7 +16,6 @@
            fx:controller="com.gamereview.controller.UserProfileController">
     <children>
 
-        <!-- CARTÃO CENTRALIZADO (Estilo moderno com largura controlada) -->
         <VBox alignment="CENTER"
               maxHeight="480.0"
               maxWidth="420.0"
@@ -32,11 +31,11 @@
 
             <children>
 
-                <!-- TÍTULO COM O ESTILO NEON -->
+
                 <Label text="MY PROFILE"
                        styleClass="neon-title"/>
 
-                <!-- SEÇÃO DE VISUALIZAÇÃO DO PERFIL -->
+
                 <VBox fx:id="profileView"
                       alignment="CENTER"
                       spacing="18.0">
@@ -70,7 +69,7 @@
                     </children>
                 </VBox>
 
-                <!-- SEÇÃO DE EDIÇÃO DO PERFIL -->
+
                 <VBox fx:id="profileEdit"
                       alignment="CENTER"
                       spacing="12.0"

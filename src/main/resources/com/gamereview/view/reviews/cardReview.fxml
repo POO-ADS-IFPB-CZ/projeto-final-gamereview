@@ -36,9 +36,9 @@
                 <Button fx:id="btnLike" styleClass="btn-login" text="❤" onAction="#handleLike" />
                 <Label fx:id="lblLikeCount" styleClass="checkbox-text" text="0" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
                 
-                <Button fx:id="btnUpd" styleClass="btn-login" text="Editar"/>
-                <Button fx:id="btnDel" styleClass="btn-login" text="Excluir"/>
-                <Button fx:id="btnComments" styleClass="btn-login" text="Comentários" onAction="#handleOpenComments"/>
+                <Button fx:id="btnUpd" styleClass="btn-login" text="Edit"/>
+                <Button fx:id="btnDel" styleClass="btn-login" text="Delete"/>
+                <Button fx:id="btnComments" styleClass="btn-login" text="Comments" onAction="#handleOpenComments"/>
             </children>
         </HBox>
 

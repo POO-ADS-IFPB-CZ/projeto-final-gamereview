@@ -92,20 +92,20 @@
 .profile-text {
     -fx-text-fill: white;
 }
-/* Efeito de Texto Neon para Títulos */
+
 .neon-title {
     -fx-text-fill: #ffffff;
     -fx-font-size: 22px;
     -fx-font-weight: bold;
     -fx-effect: dropshadow(three-pass-box, #00e5ff, 12, 0.6, 0, 0);
 }
-/* Ajuste para o texto e setinha do ComboBox ficarem visíveis no tema escuro */
+
 .combobox, .input-field {
     -fx-text-fill: #ffffff;
 }
 
 .combo-box .list-cell {
-    -fx-text-fill: #000000; /* Texto preto quando abre a lista para facilitar a leitura */
+    -fx-text-fill: #000000;
 }
 
 .combo-box-base {

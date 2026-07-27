@@ -13,7 +13,6 @@
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.gamereview.controller.HomeController">
 
-    <!-- MENU SUPERIOR -->
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="65.0" spacing="15.0" styleClass="login-card" BorderPane.alignment="CENTER">
             <padding>
@@ -35,17 +34,16 @@
         </HBox>
     </top>
 
-    <!-- CONTEÚDO CENTRALIZADO DO FEED -->
     <center>
         <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
             </padding>
             <children>
-                <!-- CONTAINER CENTRAL COM LARGURA DELIMITADA (Para os cards não esticarem demais) -->
+
                 <VBox alignment="TOP_CENTER" maxWidth="750.0" spacing="15.0" VBox.vgrow="ALWAYS">
                     <children>
-                        <!-- CABEÇALHO DO FEED (Reviews + Botão Criar) -->
+
                         <HBox alignment="CENTER_LEFT" spacing="15.0" maxWidth="750.0">
                             <children>
                                 <VBox HBox.hgrow="ALWAYS">

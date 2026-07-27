@@ -19,7 +19,6 @@
    <children>
       <VBox alignment="CENTER" maxHeight="450.0" maxWidth="350.0" styleClass="login-card">
          <children>
-            <!-- A TAG ABAIXO FOI CORRIGIDA. ELA NÃO DEVE TER "/" NO FINAL -->
             <StackPane prefHeight="200.0" prefWidth="350.0" styleClass="card-top">
                <children>
                   <ImageView fitHeight="200.0" fitWidth="350.0" pickOnBounds="true">
@@ -39,14 +38,6 @@
 
                   <TextField fx:id="txtEmail" prefHeight="35.0" promptText="EMAIL" styleClass="input-field" />
                   <PasswordField fx:id="txtPassword" prefHeight="35.0" promptText="PASSWORD" styleClass="input-field" />
-
-                  <HBox alignment="CENTER" prefWidth="200.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" styleClass="checkbox-text" text="Keep me logged in" />
-                        <javafx.scene.layout.Region HBox.hgrow="ALWAYS" />
-                        <Hyperlink styleClass="link-text" text="Forgot Password?" />
-                     </children>
-                  </HBox>
 
                   <Button fx:id="btnEntrar" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="btn-login" text="LOGIN"
                           onAction="#login">
