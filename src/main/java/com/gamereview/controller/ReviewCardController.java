@@ -26,15 +26,13 @@ public class ReviewCardController {
     @FXML private Label lblUser;
     @FXML private Button btnDel;
     @FXML private Button btnUpd;
-    
-    // --- Suas implementações (Likes) ---
+
     @FXML private Button btnLike;
     @FXML private Label lblLikeCount;
     private int currentReviewId;
     private int loggedUserId;
     private LikeDAO likeDAO = new LikeDAO();
-    
-    // --- Implementações do seu colega (Comentários) ---
+
     @FXML private Button btnComments;
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
